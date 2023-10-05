@@ -19,7 +19,7 @@ namespace NWhen.Tests.Components
         [InlineData(-1)]
         [InlineData(90)]
         [InlineData(-60)]
-        public void ShouldFailSetupFrequencyWhenProvidedWithAnIncorrectValue(int second)
+        public void ShouldFailWhenProvidedWithAnIncorrectValue(int second)
         {
             var action = () => new Second(second);
             action.Should().Throw<InvalidSecondException>();
