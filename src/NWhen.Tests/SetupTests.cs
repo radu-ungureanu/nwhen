@@ -22,6 +22,7 @@ namespace NWhen.Tests
             _sut.Interval.Should().BeNull();
             _sut.WorkWeekStartDay.Should().BeNull();
             _sut.BySeconds.Should().BeNull();
+            _sut.ByHours.Should().BeNull();
             _sut.Should().BeSameAs(reference);
         }
 
@@ -38,6 +39,7 @@ namespace NWhen.Tests
             _sut.Interval.Should().BeNull();
             _sut.WorkWeekStartDay.Should().BeNull();
             _sut.BySeconds.Should().BeNull();
+            _sut.ByHours.Should().BeNull();
             _sut.Should().BeSameAs(reference);
         }
 
@@ -54,6 +56,7 @@ namespace NWhen.Tests
             _sut.Interval.Should().BeNull();
             _sut.WorkWeekStartDay.Should().BeNull();
             _sut.BySeconds.Should().BeNull();
+            _sut.ByHours.Should().BeNull();
             _sut.Should().BeSameAs(reference);
         }
 
@@ -70,6 +73,7 @@ namespace NWhen.Tests
             _sut.Interval.Should().BeNull();
             _sut.WorkWeekStartDay.Should().BeNull();
             _sut.BySeconds.Should().BeNull();
+            _sut.ByHours.Should().BeNull();
             _sut.Should().BeSameAs(reference);
         }
 
@@ -86,6 +90,7 @@ namespace NWhen.Tests
             _sut.Interval.Should().Be(interval);
             _sut.WorkWeekStartDay.Should().BeNull();
             _sut.BySeconds.Should().BeNull();
+            _sut.ByHours.Should().BeNull();
             _sut.Should().BeSameAs(reference);
         }
 
@@ -102,6 +107,7 @@ namespace NWhen.Tests
             _sut.Interval.Should().BeNull();
             _sut.WorkWeekStartDay.Should().Be(day);
             _sut.BySeconds.Should().BeNull();
+            _sut.ByHours.Should().BeNull();
             _sut.Should().BeSameAs(reference);
         }
 
@@ -118,6 +124,24 @@ namespace NWhen.Tests
             _sut.Interval.Should().BeNull();
             _sut.WorkWeekStartDay.Should().BeNull();
             _sut.BySeconds.Should().Equal(new[] { second });
+            _sut.ByHours.Should().BeNull();
+            _sut.Should().BeSameAs(reference);
+        }
+
+        [Fact]
+        public void ShouldSetupOnlyHour()
+        {
+            var hour = 12;
+            var reference = _sut.SetByHour(hour);
+
+            _sut.StartDate.Should().BeNull();
+            _sut.UntilDate.Should().BeNull();
+            _sut.Frequency.Should().BeNull();
+            _sut.Count.Should().BeNull();
+            _sut.Interval.Should().BeNull();
+            _sut.WorkWeekStartDay.Should().BeNull();
+            _sut.BySeconds.Should().BeNull();
+            _sut.ByHours.Should().Equal(new[] { hour });
             _sut.Should().BeSameAs(reference);
         }
     }
