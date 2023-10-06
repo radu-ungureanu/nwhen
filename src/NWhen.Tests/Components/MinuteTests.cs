@@ -20,6 +20,7 @@ namespace NWhen.Tests.Components
         [InlineData(-1)]
         [InlineData(99)]
         [InlineData(-60)]
+        [InlineData(65)]
         public void ShouldFailWhenProvidedWithAnIncorrectValue(int minute)
         {
             var action = () => new Minute(minute);
