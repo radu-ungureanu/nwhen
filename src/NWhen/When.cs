@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NWhen.Components;
+using System;
 using System.Linq;
 
 namespace NWhen

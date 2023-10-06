@@ -1,4 +1,5 @@
-﻿using NWhen.Exceptions;
+﻿using NWhen.Components;
+using NWhen.Exceptions;
 
 namespace NWhen.Tests.Components
 {
