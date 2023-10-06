@@ -13,6 +13,7 @@ namespace NWhen
         public int? Interval { get; private set; }
         public string WorkWeekStartDay { get; private set; }
         public int[] BySeconds { get; private set; }
+        public int[] ByMinutes { get; private set; }
         public int[] ByHours { get; private set; }
 
         public When SetStartDate(DateTime date)
@@ -54,6 +55,12 @@ namespace NWhen
         public When SetBySecond(params Second[] seconds)
         {
             BySeconds = seconds.Select(second => second.Value).ToArray();
+            return this;
+        }
+
+        public When SetByMinute(params Minute[] minutes)
+        {
+            ByMinutes = minutes.Select(minute => minute.Value).ToArray();
             return this;
         }
 
