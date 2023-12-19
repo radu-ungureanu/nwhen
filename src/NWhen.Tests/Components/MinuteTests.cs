@@ -28,7 +28,7 @@ namespace NWhen.Tests.Components
         }
 
         [Fact]
-        public void ShouldHaveAnImplicitOperatorFromString()
+        public void ShouldHaveAnImplicitOperatorFromInt()
         {
             var minute = 10;
             Minute sut = minute;
