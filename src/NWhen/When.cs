@@ -15,6 +15,7 @@ public class When
     public int[]? BySeconds { get; private set; }
     public int[]? ByMinutes { get; private set; }
     public int[]? ByHours { get; private set; }
+    public int[]? ByMonths { get; private set; }
 
     public When SetStartDate(DateTime date)
     {
@@ -67,6 +68,12 @@ public class When
     public When SetByHour(params Hour[] hours)
     {
         ByHours = hours.Select(hour => hour.Value).ToArray();
+        return this;
+    }
+
+    public When SetByMonth(params Month[] months)
+    {
+        ByMonths = months.Select(month => month.Value).ToArray();
         return this;
     }
 }
