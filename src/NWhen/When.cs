@@ -46,9 +46,9 @@ namespace NWhen
             return this;
         }
 
-        public When SetWorkWeekStartDay(Day day)
+        public When SetWorkWeekStartDay(WeekDay weekDay)
         {
-            WorkWeekStartDay = day.Value;
+            WorkWeekStartDay = weekDay.Value;
             return this;
         }
 
