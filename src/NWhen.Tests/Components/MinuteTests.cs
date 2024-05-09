@@ -8,6 +8,8 @@ public class MinuteTests
     [Theory]
     [InlineData(0)]
     [InlineData(21)]
+    [InlineData(31)]
+    [InlineData(55)]
     [InlineData(59)]
     public void ShouldAllowCorrectValues(int minute)
     {
@@ -17,10 +19,11 @@ public class MinuteTests
     }
 
     [Theory]
-    [InlineData(-1)]
-    [InlineData(99)]
     [InlineData(-60)]
+    [InlineData(-1)]
+    [InlineData(60)]
     [InlineData(65)]
+    [InlineData(99)]
     public void ShouldFailWhenProvidedWithAnIncorrectValue(int minute)
     {
         var action = () => new Minute(minute);

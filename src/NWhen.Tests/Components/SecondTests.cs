@@ -8,6 +8,8 @@ public class SecondTests
     [Theory]
     [InlineData(0)]
     [InlineData(1)]
+    [InlineData(5)]
+    [InlineData(59)]
     [InlineData(60)]
     public void ShouldAllowCorrectValues(int second)
     {
@@ -17,9 +19,10 @@ public class SecondTests
     }
 
     [Theory]
-    [InlineData(-1)]
-    [InlineData(90)]
     [InlineData(-60)]
+    [InlineData(-1)]
+    [InlineData(61)]
+    [InlineData(90)]
     public void ShouldFailWhenProvidedWithAnIncorrectValue(int second)
     {
         var action = () => new Second(second);

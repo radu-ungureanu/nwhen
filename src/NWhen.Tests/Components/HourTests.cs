@@ -8,6 +8,8 @@ public class HourTests
     [Theory]
     [InlineData(0)]
     [InlineData(5)]
+    [InlineData(8)]
+    [InlineData(19)]
     [InlineData(23)]
     public void ShouldAllowCorrectValues(int hour)
     {
@@ -17,10 +19,11 @@ public class HourTests
     }
 
     [Theory]
+    [InlineData(-60)]
     [InlineData(-1)]
     [InlineData(24)]
+    [InlineData(60)]
     [InlineData(1000)]
-    [InlineData(-60)]
     public void ShouldFailWhenProvidedWithAnIncorrectValue(int hour)
     {
         var action = () => new Hour(hour);

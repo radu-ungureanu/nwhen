@@ -6,7 +6,11 @@ namespace NWhen.Tests.Components;
 public class MonthDayTests
 {
     [Theory]
+    [InlineData(-23)]
+    [InlineData(-12)]
     [InlineData(-1)]
+    [InlineData(1)]
+    [InlineData(12)]
     [InlineData(31)]
     public void ShouldAllowCorrectValues(int monthDay)
     {
@@ -16,9 +20,10 @@ public class MonthDayTests
     }
 
     [Theory]
-    [InlineData(0)]
     [InlineData(-32)]
+    [InlineData(0)]
     [InlineData(32)]
+    [InlineData(99)]
     public void ShouldFailWhenProvidedWithAnIncorrectValue(int monthDay)
     {
         var action = () => new MonthDay(monthDay);

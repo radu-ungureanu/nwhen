@@ -6,8 +6,12 @@ namespace NWhen.Tests.Components;
 public class YearDayTests
 {
     [Theory]
-    [InlineData(-1)]
     [InlineData(-366)]
+    [InlineData(-12)]
+    [InlineData(-1)]
+    [InlineData(1)]
+    [InlineData(12)]
+    [InlineData(90)]
     public void ShouldAllowCorrectValues(int yearDay)
     {
         var sut = new YearDay(yearDay);
@@ -16,8 +20,10 @@ public class YearDayTests
     }
 
     [Theory]
-    [InlineData(0)]
     [InlineData(-367)]
+    [InlineData(0)]
+    [InlineData(367)]
+    [InlineData(380)]
     [InlineData(399)]
     public void ShouldFailWhenProvidedWithAnIncorrectValue(int yearDay)
     {

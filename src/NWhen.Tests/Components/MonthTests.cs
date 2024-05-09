@@ -7,6 +7,7 @@ public class MonthTests
 {
     [Theory]
     [InlineData(1)]
+    [InlineData(9)]
     [InlineData(12)]
     public void ShouldAllowCorrectValues(int month)
     {
@@ -16,8 +17,10 @@ public class MonthTests
     }
 
     [Theory]
-    [InlineData(0)]
     [InlineData(-12)]
+    [InlineData(-1)]
+    [InlineData(0)]
+    [InlineData(99)]
     public void ShouldFailWhenProvidedWithAnIncorrectValue(int month)
     {
         var action = () => new Month(month);
