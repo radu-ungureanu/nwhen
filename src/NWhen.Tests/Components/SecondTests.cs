@@ -22,6 +22,7 @@ public class SecondTests
     [InlineData(-60)]
     [InlineData(-1)]
     [InlineData(61)]
+    [InlineData(65)]
     [InlineData(90)]
     public void ShouldFailWhenProvidedWithAnIncorrectValue(int second)
     {
