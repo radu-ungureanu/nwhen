@@ -17,6 +17,7 @@ public class When
     public int[]? ByHours { get; private set; }
     public int[]? ByMonths { get; private set; }
     public int[]? ByMonthDays { get; private set; }
+    public int[]? ByYearDays { get; private set; }
 
     public When SetStartDate(DateTime date)
     {
@@ -81,6 +82,12 @@ public class When
     public When SetByMonthDay(params MonthDay[] monthDays)
     {
         ByMonthDays = monthDays.Select(monthDay => monthDay.Value).ToArray();
+        return this;
+    }
+
+    public When SetByYearDay(params YearDay[] yearDays)
+    {
+        ByYearDays = yearDays.Select(yearDay => yearDay.Value).ToArray();
         return this;
     }
 }
