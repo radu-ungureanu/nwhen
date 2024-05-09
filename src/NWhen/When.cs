@@ -8,13 +8,13 @@ public class When
 {
     public DateTime? StartDate { get; private set; }
     public DateTime? UntilDate { get; private set; }
-    public string Frequency { get; private set; }
+    public string? Frequency { get; private set; }
     public int? Count { get; private set; }
     public int? Interval { get; private set; }
-    public string WorkWeekStartDay { get; private set; }
-    public int[] BySeconds { get; private set; }
-    public int[] ByMinutes { get; private set; }
-    public int[] ByHours { get; private set; }
+    public string? WorkWeekStartDay { get; private set; }
+    public int[]? BySeconds { get; private set; }
+    public int[]? ByMinutes { get; private set; }
+    public int[]? ByHours { get; private set; }
 
     public When SetStartDate(DateTime date)
     {
