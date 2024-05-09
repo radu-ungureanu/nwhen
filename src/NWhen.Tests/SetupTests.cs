@@ -129,7 +129,7 @@ namespace NWhen.Tests
             _sut.Count.Should().BeNull();
             _sut.Interval.Should().BeNull();
             _sut.WorkWeekStartDay.Should().BeNull();
-            _sut.BySeconds.Should().Equal(new[] { second });
+            _sut.BySeconds.Should().Equal([second]);
             _sut.ByMinutes.Should().BeNull();
             _sut.ByHours.Should().BeNull();
             _sut.Should().BeSameAs(reference);
@@ -148,7 +148,7 @@ namespace NWhen.Tests
             _sut.Interval.Should().BeNull();
             _sut.WorkWeekStartDay.Should().BeNull();
             _sut.BySeconds.Should().BeNull();
-            _sut.ByMinutes.Should().Equal(new[] { minute });
+            _sut.ByMinutes.Should().Equal([minute]);
             _sut.ByHours.Should().BeNull();
             _sut.Should().BeSameAs(reference);
         }
@@ -167,7 +167,7 @@ namespace NWhen.Tests
             _sut.WorkWeekStartDay.Should().BeNull();
             _sut.BySeconds.Should().BeNull();
             _sut.ByMinutes.Should().BeNull();
-            _sut.ByHours.Should().Equal(new[] { hour });
+            _sut.ByHours.Should().Equal([hour]);
             _sut.Should().BeSameAs(reference);
         }
     }
