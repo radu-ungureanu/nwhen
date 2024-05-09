@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Linq;
 
 namespace NWhen.Components;
 
 public abstract class BetweenComponent<TException>
     where TException : ArgumentException
 {
-    public abstract int MinValue { get; }
-    public abstract int MaxValue { get; }
+    protected abstract int MinValue { get; }
+    protected abstract int MaxValue { get; }
+    protected abstract int[] Except { get; }
     public int Value { get; }
 
     protected BetweenComponent(int value)
@@ -17,7 +19,7 @@ public abstract class BetweenComponent<TException>
         Value = value;
     }
 
-    public bool IsValid(int value) => value >= MinValue && value <= MaxValue;
+    public bool IsValid(int value) => value >= MinValue && value <= MaxValue && !Except.Contains(value);
 
     public abstract TException ThrowWhenInvalid(string message);
 }

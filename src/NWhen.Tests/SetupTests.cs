@@ -27,6 +27,7 @@ public class SetupTests
         _sut.ByMinutes.Should().BeNull();
         _sut.ByHours.Should().BeNull();
         _sut.ByMonths.Should().BeNull();
+        _sut.ByMonthDays.Should().BeNull();
         _sut.Should().BeSameAs(reference);
     }
 
@@ -46,6 +47,7 @@ public class SetupTests
         _sut.ByMinutes.Should().BeNull();
         _sut.ByHours.Should().BeNull();
         _sut.ByMonths.Should().BeNull();
+        _sut.ByMonthDays.Should().BeNull();
         _sut.Should().BeSameAs(reference);
     }
 
@@ -65,6 +67,7 @@ public class SetupTests
         _sut.ByMinutes.Should().BeNull();
         _sut.ByHours.Should().BeNull();
         _sut.ByMonths.Should().BeNull();
+        _sut.ByMonthDays.Should().BeNull();
         _sut.Should().BeSameAs(reference);
     }
 
@@ -84,6 +87,7 @@ public class SetupTests
         _sut.ByMinutes.Should().BeNull();
         _sut.ByHours.Should().BeNull();
         _sut.ByMonths.Should().BeNull();
+        _sut.ByMonthDays.Should().BeNull();
         _sut.Should().BeSameAs(reference);
     }
 
@@ -103,6 +107,7 @@ public class SetupTests
         _sut.ByMinutes.Should().BeNull();
         _sut.ByHours.Should().BeNull();
         _sut.ByMonths.Should().BeNull();
+        _sut.ByMonthDays.Should().BeNull();
         _sut.Should().BeSameAs(reference);
     }
 
@@ -122,6 +127,7 @@ public class SetupTests
         _sut.ByMinutes.Should().BeNull();
         _sut.ByHours.Should().BeNull();
         _sut.ByMonths.Should().BeNull();
+        _sut.ByMonthDays.Should().BeNull();
         _sut.Should().BeSameAs(reference);
     }
 
@@ -141,6 +147,7 @@ public class SetupTests
         _sut.ByMinutes.Should().BeNull();
         _sut.ByHours.Should().BeNull();
         _sut.ByMonths.Should().BeNull();
+        _sut.ByMonthDays.Should().BeNull();
         _sut.Should().BeSameAs(reference);
     }
 
@@ -160,6 +167,7 @@ public class SetupTests
         _sut.ByMinutes.Should().Equal([minute]);
         _sut.ByHours.Should().BeNull();
         _sut.ByMonths.Should().BeNull();
+        _sut.ByMonthDays.Should().BeNull();
         _sut.Should().BeSameAs(reference);
     }
 
@@ -179,6 +187,7 @@ public class SetupTests
         _sut.ByMinutes.Should().BeNull();
         _sut.ByHours.Should().Equal([hour]);
         _sut.ByMonths.Should().BeNull();
+        _sut.ByMonthDays.Should().BeNull();
         _sut.Should().BeSameAs(reference);
     }
 
@@ -198,6 +207,27 @@ public class SetupTests
         _sut.ByMinutes.Should().BeNull();
         _sut.ByHours.Should().BeNull();
         _sut.ByMonths.Should().Equal([month]);
+        _sut.ByMonthDays.Should().BeNull();
+        _sut.Should().BeSameAs(reference);
+    }
+
+    [Fact]
+    public void ShouldSetupOnlyMonthDays()
+    {
+        var monthDay = 12;
+        var reference = _sut.SetByMonthDay(monthDay);
+
+        _sut.StartDate.Should().BeNull();
+        _sut.UntilDate.Should().BeNull();
+        _sut.Frequency.Should().BeNull();
+        _sut.Count.Should().BeNull();
+        _sut.Interval.Should().BeNull();
+        _sut.WorkWeekStartDay.Should().BeNull();
+        _sut.BySeconds.Should().BeNull();
+        _sut.ByMinutes.Should().BeNull();
+        _sut.ByHours.Should().BeNull();
+        _sut.ByMonths.Should().BeNull();
+        _sut.ByMonthDays.Should().Equal([monthDay]);
         _sut.Should().BeSameAs(reference);
     }
 }

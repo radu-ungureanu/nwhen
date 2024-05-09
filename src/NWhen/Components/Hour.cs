@@ -4,9 +4,11 @@ namespace NWhen.Components;
 
 public class Hour(int hour) : BetweenComponent<InvalidHourException>(hour)
 {
-    public override int MinValue => 0;
+    protected override int MinValue => 0;
 
-    public override int MaxValue => 23;
+    protected override int MaxValue => 23;
+
+    protected override int[] Except => [];
 
     public static implicit operator Hour(int hour) => new(hour);
 
