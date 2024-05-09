@@ -1,9 +1,7 @@
 ﻿using System;
 
-namespace NWhen.Exceptions
+namespace NWhen.Exceptions;
+
+public class InvalidFrequencyException(string message) : ArgumentException(message)
 {
-    public class InvalidFrequencyException : ArgumentException
-    {
-        public InvalidFrequencyException(string message) : base(message) { }
-    }
 }

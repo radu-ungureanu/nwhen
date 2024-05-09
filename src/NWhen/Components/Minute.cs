@@ -1,17 +1,14 @@
 ﻿using NWhen.Exceptions;
 
-namespace NWhen.Components
+namespace NWhen.Components;
+
+public class Minute(int minute) : BetweenComponent<InvalidMinuteException>(minute)
 {
-    public class Minute : BetweenComponent<InvalidMinuteException>
-    {
-        public override int MinValue => 0;
+    public override int MinValue => 0;
 
-        public override int MaxValue => 59;
+    public override int MaxValue => 59;
 
-        public Minute(int minute) : base(minute) { }
+    public static implicit operator Minute(int minute) => new(minute);
 
-        public static implicit operator Minute(int minute) => new Minute(minute);
-
-        public override InvalidMinuteException ThrowWhenInvalid(string message) => new InvalidMinuteException(message);
-    }
+    public override InvalidMinuteException ThrowWhenInvalid(string message) => new(message);
 }

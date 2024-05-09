@@ -1,9 +1,7 @@
 ﻿using System;
 
-namespace NWhen.Exceptions
+namespace NWhen.Exceptions;
+
+public class InvalidSecondException(string message) : ArgumentException(message)
 {
-    public class InvalidSecondException : ArgumentException
-    {
-        public InvalidSecondException(string message) : base(message) { }
-    }
 }

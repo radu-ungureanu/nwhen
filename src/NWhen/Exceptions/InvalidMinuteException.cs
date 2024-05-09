@@ -1,9 +1,7 @@
 ﻿using System;
 
-namespace NWhen.Exceptions
+namespace NWhen.Exceptions;
+
+public class InvalidMinuteException(string message) : ArgumentException(message)
 {
-    public class InvalidMinuteException : ArgumentException
-    {
-        public InvalidMinuteException(string message) : base(message) { }
-    }
 }

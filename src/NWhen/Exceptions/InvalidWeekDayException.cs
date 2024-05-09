@@ -1,9 +1,7 @@
 ﻿using System;
 
-namespace NWhen.Exceptions
+namespace NWhen.Exceptions;
+
+public class InvalidWeekDayException(string message) : ArgumentException(message)
 {
-    public class InvalidWeekDayException : ArgumentException
-    {
-       public InvalidWeekDayException(string message) : base(message) { }
-    }
 }

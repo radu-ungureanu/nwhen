@@ -1,9 +1,7 @@
 ﻿using System;
 
-namespace NWhen.Exceptions
+namespace NWhen.Exceptions;
+
+public class InvalidHourException(string message) : ArgumentException(message)
 {
-    public class InvalidHourException : ArgumentException
-    {
-        public InvalidHourException(string message) : base(message) { }
-    }
 }

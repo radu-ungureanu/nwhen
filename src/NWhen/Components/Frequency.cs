@@ -1,24 +1,21 @@
 ﻿using NWhen.Exceptions;
 
-namespace NWhen.Components
+namespace NWhen.Components;
+
+public class Frequency(string frequency) : AvailableValuesComponent<InvalidFrequencyException>(frequency)
 {
-    public class Frequency : AvailableValuesComponent<InvalidFrequencyException>
-    {
-        public override string[] AvailableValues => new[]
-        {
-            "secondly",
-            "minutely",
-            "hourly",
-            "daily",
-            "weekly",
-            "monthly",
-            "yearly"
-        };
+    public override string[] AvailableValues =>
+    [
+        "secondly",
+        "minutely",
+        "hourly",
+        "daily",
+        "weekly",
+        "monthly",
+        "yearly"
+    ];
 
-        public Frequency(string frequency) : base(frequency) { }
+    public static implicit operator Frequency(string frequency) => new(frequency);
 
-        public static implicit operator Frequency(string frequency) => new Frequency(frequency);
-
-        public override InvalidFrequencyException ThrowWhenInvalid(string message) => new InvalidFrequencyException(message);
-    }
+    public override InvalidFrequencyException ThrowWhenInvalid(string message) => new(message);
 }
