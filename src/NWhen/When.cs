@@ -16,6 +16,7 @@ public class When
     public int[]? ByMinutes { get; private set; }
     public int[]? ByHours { get; private set; }
     public int[]? ByMonths { get; private set; }
+    public int[]? ByWeekNumbers { get; private set; }
     public int[]? ByMonthDays { get; private set; }
     public int[]? ByYearDays { get; private set; }
 
@@ -76,6 +77,12 @@ public class When
     public When SetByMonth(params Month[] months)
     {
         ByMonths = months.Select(month => month.Value).ToArray();
+        return this;
+    }
+
+    public When SetByWeekNumber(params WeekNumber[] weekNumbers)
+    {
+        ByWeekNumbers = weekNumbers.Select(weekNumber => weekNumber.Value).ToArray();
         return this;
     }
 
