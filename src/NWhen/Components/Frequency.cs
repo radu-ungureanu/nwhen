@@ -1,4 +1,5 @@
-﻿using NWhen.Exceptions;
+﻿using NWhen.Components.Base;
+using NWhen.Exceptions;
 
 namespace NWhen.Components;
 
@@ -16,6 +17,4 @@ public class Frequency(string frequency) : AvailableValuesComponent<InvalidFrequ
     ];
 
     public static implicit operator Frequency(string frequency) => new(frequency);
-
-    public override InvalidFrequencyException ThrowWhenInvalid(string message) => new(message);
 }

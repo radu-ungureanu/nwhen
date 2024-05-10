@@ -1,4 +1,5 @@
-﻿using NWhen.Exceptions;
+﻿using NWhen.Components.Base;
+using NWhen.Exceptions;
 
 namespace NWhen.Components;
 
@@ -8,9 +9,5 @@ public class Minute(int minute) : BetweenComponent<InvalidMinuteException>(minut
 
     protected override int MaxValue => 59;
 
-    protected override int[] Except => [];
-
     public static implicit operator Minute(int minute) => new(minute);
-
-    public override InvalidMinuteException ThrowWhenInvalid(string message) => new(message);
 }
