@@ -1,7 +1,4 @@
-﻿using NWhen.Components;
-using NWhen.Exceptions;
-
-namespace NWhen.Tests.Components;
+﻿namespace NWhen.Tests.Components;
 
 public class HourTests
 {
