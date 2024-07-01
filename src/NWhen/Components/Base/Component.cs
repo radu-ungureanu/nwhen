@@ -14,10 +14,12 @@ public abstract class Component<TValue, TException>
             throw (TException)Activator.CreateInstance(typeof(TException), GetErrorMessage(value));
         }
 
-        Value = value;
+        Value = TransformValue(value);
     }
 
     protected abstract bool IsValid(TValue value);
+
+    protected virtual TValue TransformValue(TValue value) => value;
 
     protected abstract string GetErrorMessage(TValue value);
 }

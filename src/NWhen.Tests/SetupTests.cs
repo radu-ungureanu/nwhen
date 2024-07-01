@@ -29,6 +29,7 @@ public class SetupTests
         _sut.ByMonthDays.Should().BeNull();
         _sut.ByYearDays.Should().BeNull();
         _sut.BySetPositions.Should().BeNull();
+        _sut.ByDays.Should().BeNull();
         _sut.Should().BeSameAs(reference);
     }
 
@@ -52,6 +53,7 @@ public class SetupTests
         _sut.ByMonthDays.Should().BeNull();
         _sut.ByYearDays.Should().BeNull();
         _sut.BySetPositions.Should().BeNull();
+        _sut.ByDays.Should().BeNull();
         _sut.Should().BeSameAs(reference);
     }
 
@@ -75,6 +77,7 @@ public class SetupTests
         _sut.ByMonthDays.Should().BeNull();
         _sut.ByYearDays.Should().BeNull();
         _sut.BySetPositions.Should().BeNull();
+        _sut.ByDays.Should().BeNull();
         _sut.Should().BeSameAs(reference);
     }
 
@@ -98,6 +101,7 @@ public class SetupTests
         _sut.ByMonthDays.Should().BeNull();
         _sut.ByYearDays.Should().BeNull();
         _sut.BySetPositions.Should().BeNull();
+        _sut.ByDays.Should().BeNull();
         _sut.Should().BeSameAs(reference);
     }
 
@@ -121,6 +125,7 @@ public class SetupTests
         _sut.ByMonthDays.Should().BeNull();
         _sut.ByYearDays.Should().BeNull();
         _sut.BySetPositions.Should().BeNull();
+        _sut.ByDays.Should().BeNull();
         _sut.Should().BeSameAs(reference);
     }
 
@@ -144,6 +149,7 @@ public class SetupTests
         _sut.ByMonthDays.Should().BeNull();
         _sut.ByYearDays.Should().BeNull();
         _sut.BySetPositions.Should().BeNull();
+        _sut.ByDays.Should().BeNull();
         _sut.Should().BeSameAs(reference);
     }
 
@@ -167,6 +173,7 @@ public class SetupTests
         _sut.ByMonthDays.Should().BeNull();
         _sut.ByYearDays.Should().BeNull();
         _sut.BySetPositions.Should().BeNull();
+        _sut.ByDays.Should().BeNull();
         _sut.Should().BeSameAs(reference);
     }
 
@@ -190,6 +197,7 @@ public class SetupTests
         _sut.ByMonthDays.Should().BeNull();
         _sut.ByYearDays.Should().BeNull();
         _sut.BySetPositions.Should().BeNull();
+        _sut.ByDays.Should().BeNull();
         _sut.Should().BeSameAs(reference);
     }
 
@@ -213,6 +221,7 @@ public class SetupTests
         _sut.ByMonthDays.Should().BeNull();
         _sut.ByYearDays.Should().BeNull();
         _sut.BySetPositions.Should().BeNull();
+        _sut.ByDays.Should().BeNull();
         _sut.Should().BeSameAs(reference);
     }
 
@@ -236,6 +245,7 @@ public class SetupTests
         _sut.ByMonthDays.Should().BeNull();
         _sut.ByYearDays.Should().BeNull();
         _sut.BySetPositions.Should().BeNull();
+        _sut.ByDays.Should().BeNull();
         _sut.Should().BeSameAs(reference);
     }
 
@@ -259,6 +269,7 @@ public class SetupTests
         _sut.ByMonthDays.Should().BeNull();
         _sut.ByYearDays.Should().BeNull();
         _sut.BySetPositions.Should().BeNull();
+        _sut.ByDays.Should().BeNull();
         _sut.Should().BeSameAs(reference);
     }
 
@@ -282,6 +293,7 @@ public class SetupTests
         _sut.ByMonthDays.Should().Equal([monthDay]);
         _sut.ByYearDays.Should().BeNull();
         _sut.BySetPositions.Should().BeNull();
+        _sut.ByDays.Should().BeNull();
         _sut.Should().BeSameAs(reference);
     }
 
@@ -305,6 +317,7 @@ public class SetupTests
         _sut.ByMonthDays.Should().BeNull();
         _sut.ByYearDays.Should().Equal([yearDay]);
         _sut.BySetPositions.Should().BeNull();
+        _sut.ByDays.Should().BeNull();
         _sut.Should().BeSameAs(reference);
     }
 
@@ -328,6 +341,31 @@ public class SetupTests
         _sut.ByMonthDays.Should().BeNull();
         _sut.ByYearDays.Should().BeNull();
         _sut.BySetPositions.Should().Equal([setPos]);
+        _sut.ByDays.Should().BeNull();
+        _sut.Should().BeSameAs(reference);
+    }
+
+    [Fact]
+    public void ShouldSetupOnlyDays()
+    {
+        var day = "31tu";
+        var reference = _sut.SetByDay(day);
+
+        _sut.StartDate.Should().BeNull();
+        _sut.UntilDate.Should().BeNull();
+        _sut.Frequency.Should().BeNull();
+        _sut.Count.Should().BeNull();
+        _sut.Interval.Should().BeNull();
+        _sut.WorkWeekStartDay.Should().BeNull();
+        _sut.BySeconds.Should().BeNull();
+        _sut.ByMinutes.Should().BeNull();
+        _sut.ByHours.Should().BeNull();
+        _sut.ByMonths.Should().BeNull();
+        _sut.ByWeekNumbers.Should().BeNull();
+        _sut.ByMonthDays.Should().BeNull();
+        _sut.ByYearDays.Should().BeNull();
+        _sut.BySetPositions.Should().BeNull();
+        _sut.ByDays.Should().Equal([day]);
         _sut.Should().BeSameAs(reference);
     }
 }

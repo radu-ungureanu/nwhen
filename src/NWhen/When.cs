@@ -20,6 +20,7 @@ public class When
     public int[]? ByMonthDays { get; private set; }
     public int[]? ByYearDays { get; private set; }
     public int[]? BySetPositions { get; private set; }
+    public string[]? ByDays { get; private set; }
 
     /// <summary>
     /// Sets "DTSTART" rule part which contains a date or date-time from which the recurrence rule starts.
@@ -172,6 +173,17 @@ public class When
     public When SetBySetPos(params SetPos[] setPos)
     {
         BySetPositions = setPos.Select(setPos => setPos.Value).ToArray();
+        return this;
+    }
+
+    /// <summary>
+    /// Sets "BYDAY" rule part which represents list of days of the week.
+    /// </summary>
+    /// <param name="days">List of days</param>
+    /// <returns>Current instance of <see cref="When"/></returns>
+    public When SetByDay(params Day[] days)
+    {
+        ByDays = days.Select(day => day.Value).ToArray();
         return this;
     }
 }
