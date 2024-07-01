@@ -19,6 +19,7 @@ public class When
     public int[]? ByWeekNumbers { get; private set; }
     public int[]? ByMonthDays { get; private set; }
     public int[]? ByYearDays { get; private set; }
+    public int[]? BySetPositions { get; private set; }
 
     /// <summary>
     /// Sets "DTSTART" rule part which contains a date or date-time from which the recurrence rule starts.
@@ -160,6 +161,17 @@ public class When
     public When SetByYearDay(params YearDay[] yearDays)
     {
         ByYearDays = yearDays.Select(yearDay => yearDay.Value).ToArray();
+        return this;
+    }
+
+    /// <summary>
+    /// Sets "BYSETPOS" rule part which represents the nth occurrence within the set of recurrence instances specified by the rule. Valid values are 1 to 366 or -366 to -1.
+    /// </summary>
+    /// <param name="setPos">List of set positions</param>
+    /// <returns>Current instance of <see cref="When"/></returns>
+    public When SetBySetPos(params SetPos[] setPos)
+    {
+        BySetPositions = setPos.Select(setPos => setPos.Value).ToArray();
         return this;
     }
 }
