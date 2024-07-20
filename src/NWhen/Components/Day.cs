@@ -1,6 +1,6 @@
 ﻿using NWhen.Components.Base;
 using NWhen.Exceptions;
-using NWhen.SScanF;
+using ScanFormatted;
 using System;
 
 namespace NWhen.Components;
@@ -20,7 +20,7 @@ public class Day(string day) : CustomStringValidationComponent<InvalidDayExcepti
         }
         else
         {
-            var scanf = new ScanFormatted();
+            var scanf = new ScanF();
             try
             {
                 scanf.Parse(trimmed, "%d%s");
@@ -59,7 +59,7 @@ public class Day(string day) : CustomStringValidationComponent<InvalidDayExcepti
         }
         else
         {
-            var scanf = new ScanFormatted();
+            var scanf = new ScanF();
             scanf.Parse(trimmed, "%d%s");
             ordwk = (int)scanf.Results[0];
             weekday = (string)scanf.Results[1];
