@@ -21,6 +21,7 @@ public class When
     public int[]? ByYearDays { get; private set; }
     public int[]? BySetPositions { get; private set; }
     public string[]? ByDays { get; private set; }
+    public bool AdjustMonthEnd { get; private set; }
 
     /// <summary>
     /// Sets "DTSTART" rule part which contains a date or date-time from which the recurrence rule starts.
@@ -184,6 +185,12 @@ public class When
     public When SetByDay(params Day[] days)
     {
         ByDays = days.Select(day => day.Value).ToArray();
+        return this;
+    }
+
+    public When SetAdjustMonthEnd(bool adjustMonthEnd)
+    {
+        AdjustMonthEnd = adjustMonthEnd;
         return this;
     }
 }
