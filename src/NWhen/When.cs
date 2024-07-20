@@ -22,6 +22,7 @@ public class When
     public int[]? BySetPositions { get; private set; }
     public string[]? ByDays { get; private set; }
     public bool AdjustMonthEnd { get; private set; }
+    public DateTime[]? Exclusions { get; private set; }
 
     /// <summary>
     /// Sets "DTSTART" rule part which contains a date or date-time from which the recurrence rule starts.
@@ -191,6 +192,12 @@ public class When
     public When SetAdjustMonthEnd(bool adjustMonthEnd)
     {
         AdjustMonthEnd = adjustMonthEnd;
+        return this;
+    }
+
+    public When SetExclusions(params DateTime[] exclusions)
+    {
+        Exclusions = exclusions;
         return this;
     }
 }
