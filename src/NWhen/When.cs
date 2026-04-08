@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace When;
+namespace NWhen;
 
 public class When
 {

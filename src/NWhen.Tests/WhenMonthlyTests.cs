@@ -1,8 +1,4 @@
-using Xunit;
-using When;
-using System;
-
-namespace When.Tests;
+namespace NWhen.Tests;
 
 public class WhenMonthlyTests
 {

@@ -1,4 +1,4 @@
-namespace When;
+namespace NWhen;
 
 public static class Valid
 {

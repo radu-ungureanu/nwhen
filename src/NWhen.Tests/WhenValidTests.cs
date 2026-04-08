@@ -1,9 +1,4 @@
-using Xunit;
-using When;
-using System;
-using System.Collections.Generic;
-
-namespace When.Tests;
+namespace NWhen.Tests;
 
 public class WhenValidTests
 {

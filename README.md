@@ -18,7 +18,7 @@ dotnet add reference path/to/NWhen/NWhen.csproj
 Then add the namespace:
 
 ```csharp
-using When;
+using NWhen;
 ```
 
 ## Current Features
