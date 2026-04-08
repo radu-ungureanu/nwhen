@@ -5,6 +5,7 @@
 Date/Calendar recurrence library for .NET 10+
 
 [![Build Status](https://github.com/radu-ungureanu/nwhen/actions/workflows/test.yml/badge.svg)](https://github.com/radu-ungureanu/nwhen/actions)
+[![codecov](https://codecov.io/gh/radu-ungureanu/nwhen/graph/badge.svg)](https://codecov.io/gh/radu-ungureanu/nwhen)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Installation
