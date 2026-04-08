@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="NWhen/NWhen.csproj" />
+  <Project Path="NWhen.Tests/NWhen.Tests.csproj" />
+</Solution>
