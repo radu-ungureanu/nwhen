@@ -31,20 +31,20 @@ jobs:
         run: dotnet test --no-build --verbosity normal --collect:"XPlat Code Coverage" --results-directory ./TestResults
 
       - name: Generate coverage report
-        uses: danielpalme/ReportGenerator-GitHub-Action@5.4.4
+        uses: danielpalme/ReportGenerator-GitHub-Action@5.5.4
         with:
           reports: src/TestResults/**/coverage.cobertura.xml
           targetdir: coveragereport
           reporttypes: HtmlInline;Cobertura
 
       - name: Upload coverage report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: CoverageReport
           path: coveragereport
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         with:
           files: src/TestResults/**/coverage.cobertura.xml
           fail_ci_if_error: false
