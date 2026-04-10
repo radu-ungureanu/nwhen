@@ -80,9 +80,25 @@ public class When
         return this;
     }
 
+    public When count(string c)
+    {
+        if (!int.TryParse(c, out int parsed))
+            throw new ArgumentException("count: Accepts numeric values");
+        Count = parsed;
+        return this;
+    }
+
     public When interval(int i)
     {
         Interval = i;
+        return this;
+    }
+
+    public When interval(string i)
+    {
+        if (!int.TryParse(i, out int parsed))
+            throw new ArgumentException("interval: Accepts numeric values");
+        Interval = parsed;
         return this;
     }
 

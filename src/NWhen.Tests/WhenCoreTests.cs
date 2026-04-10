@@ -256,6 +256,265 @@ public class WhenCoreTests
     }
 
     [Fact]
+    public void TestValidByDay()
+    {
+        var test = new When();
+        test.byday(new[] { "+5MO", "-20MO", "31TU", "SA", "0TU" });
+        Assert.Equal(new List<string> { "5mo", "-20mo", "31tu", "0sa", "0tu" }, test.Bydays);
+
+        test = new When();
+        test.byday(new[] { "+5mo", "-20MO", "31tU", "SA" });
+        Assert.Equal(new List<string> { "5mo", "-20mo", "31tu", "0sa" }, test.Bydays);
+
+        test = new When();
+        test.byday("+5mo, -10MO, 31tU, SA");
+        Assert.Equal(new List<string> { "5mo", "-10mo", "31tu", "0sa" }, test.Bydays);
+
+        test = new When();
+        test.byday(", +5mo, -10MO, 31tU, SA,");
+        Assert.Equal(new List<string> { "5mo", "-10mo", "31tu", "0sa" }, test.Bydays);
+
+        test = new When();
+        test.byday("+5mo; -10MO; 31tU; SA;", ";");
+        Assert.Equal(new List<string> { "5mo", "-10mo", "31tu", "0sa" }, test.Bydays);
+
+        test = new When();
+        test.byday("+5mo");
+        Assert.Equal(new List<string> { "5mo" }, test.Bydays);
+    }
+
+    [Fact]
+    public void TestInvalidByDay()
+    {
+        var test = new When();
+        Assert.Throws<ArgumentException>(() => test.byday(new[] { "+5MO", "-20MO", "31TU", "-92SA" }));
+    }
+
+    [Fact]
+    public void TestValidByHour()
+    {
+        var test = new When();
+        test.byhour(12);
+        Assert.Equal(new List<int> { 12 }, test.Byhours);
+
+        test = new When();
+        test.byhour("1, 2,3 ");
+        Assert.Equal(new List<int> { 1, 2, 3 }, test.Byhours);
+
+        test = new When();
+        test.byhour("1, 2,3 ,");
+        Assert.Equal(new List<int> { 1, 2, 3 }, test.Byhours);
+
+        test = new When();
+        test.byhour(new[] { 1, 2, 3 });
+        Assert.Equal(new List<int> { 1, 2, 3 }, test.Byhours);
+
+        test = new When();
+        test.byhour("1; 2; 3", ";");
+        Assert.Equal(new List<int> { 1, 2, 3 }, test.Byhours);
+
+        test = new When();
+        test.byhour(";1; 2; 3;", ";");
+        Assert.Equal(new List<int> { 1, 2, 3 }, test.Byhours);
+    }
+
+    [Fact]
+    public void TestInvalidByHourOne()
+    {
+        var test = new When();
+        Assert.Throws<ArgumentException>(() => test.byhour(24));
+    }
+
+    [Fact]
+    public void TestInvalidByHourTwo()
+    {
+        var test = new When();
+        Assert.Throws<ArgumentException>(() => test.byhour("-1, -2"));
+    }
+
+    [Fact]
+    public void TestValidByMinute()
+    {
+        var test = new When();
+        test.byminute(12);
+        Assert.Equal(new List<int> { 12 }, test.Byminutes);
+
+        test = new When();
+        test.byminute("1, 2,3 ");
+        Assert.Equal(new List<int> { 1, 2, 3 }, test.Byminutes);
+
+        test = new When();
+        test.byminute("1, 2,3 ,");
+        Assert.Equal(new List<int> { 1, 2, 3 }, test.Byminutes);
+
+        test = new When();
+        test.byminute(new[] { 1, 2, 3 });
+        Assert.Equal(new List<int> { 1, 2, 3 }, test.Byminutes);
+
+        test = new When();
+        test.byminute("1; 2; 3", ";");
+        Assert.Equal(new List<int> { 1, 2, 3 }, test.Byminutes);
+
+        test = new When();
+        test.byminute(";1; 2; 3;", ";");
+        Assert.Equal(new List<int> { 1, 2, 3 }, test.Byminutes);
+    }
+
+    [Fact]
+    public void TestInvalidByMinuteOne()
+    {
+        var test = new When();
+        Assert.Throws<ArgumentException>(() => test.byminute(65));
+    }
+
+    [Fact]
+    public void TestInvalidByMinuteTwo()
+    {
+        var test = new When();
+        Assert.Throws<ArgumentException>(() => test.byminute("-1, -2"));
+    }
+
+    [Fact]
+    public void TestValidBySecond()
+    {
+        var test = new When();
+        test.bysecond(12);
+        Assert.Equal(new List<int> { 12 }, test.Byseconds);
+
+        test = new When();
+        test.bysecond("1, 2,3 ");
+        Assert.Equal(new List<int> { 1, 2, 3 }, test.Byseconds);
+
+        test = new When();
+        test.bysecond("1, 2,3 ,");
+        Assert.Equal(new List<int> { 1, 2, 3 }, test.Byseconds);
+
+        test = new When();
+        test.bysecond(new[] { 1, 2, 3 });
+        Assert.Equal(new List<int> { 1, 2, 3 }, test.Byseconds);
+
+        test = new When();
+        test.bysecond("1; 2; 3", ";");
+        Assert.Equal(new List<int> { 1, 2, 3 }, test.Byseconds);
+
+        test = new When();
+        test.bysecond(";1; 2; 3;", ";");
+        Assert.Equal(new List<int> { 1, 2, 3 }, test.Byseconds);
+    }
+
+    [Fact]
+    public void TestInvalidBySecondOne()
+    {
+        var test = new When();
+        Assert.Throws<ArgumentException>(() => test.bysecond(65));
+    }
+
+    [Fact]
+    public void TestInvalidBySecondTwo()
+    {
+        var test = new When();
+        Assert.Throws<ArgumentException>(() => test.bysecond("-1, -2"));
+    }
+
+    [Fact]
+    public void TestValidInterval()
+    {
+        var test = new When();
+        test.interval(20);
+        Assert.Equal(20, test.Interval);
+
+        test = new When();
+        test.interval("20");
+        Assert.Equal(20, test.Interval);
+    }
+
+    [Fact]
+    public void TestInvalidInterval()
+    {
+        var test = new When();
+        Assert.Throws<ArgumentException>(() => test.interval("week"));
+    }
+
+    [Fact]
+    public void TestValidCount()
+    {
+        var test = new When();
+        test.count(20);
+        Assert.Equal(20, test.Count);
+
+        test = new When();
+        test.count("20");
+        Assert.Equal(20, test.Count);
+    }
+
+    [Fact]
+    public void TestInvalidCount()
+    {
+        var test = new When();
+        Assert.Throws<ArgumentException>(() => test.count("weekly"));
+    }
+
+    [Fact]
+    public void TestGenerateOccurrencesInvalidStartDate()
+    {
+        var test = new When();
+        Assert.Throws<InvalidStartDateException>(() =>
+            test.startDate(new DateTime(1997, 9, 5, 9, 0, 0))
+                .rrule("FREQ=MONTHLY;COUNT=3;BYDAY=TU,WE,TH;BYSETPOS=3")
+                .generateOccurrences());
+    }
+
+    [Fact]
+    public void TestGenerateOccurrencesErrorIgnored()
+    {
+        var expected = new List<DateTime>
+        {
+            new DateTime(1997, 10, 7, 9, 0, 0),
+            new DateTime(1997, 11, 6, 9, 0, 0)
+        };
+
+        var test = new When();
+        test.RFC5545_COMPLIANT = When.IGNORE;
+        test.startDate(new DateTime(1997, 9, 5, 9, 0, 0))
+            .rrule("FREQ=MONTHLY;COUNT=2;BYDAY=TU,WE,TH;BYSETPOS=3")
+            .generateOccurrences();
+
+        Assert.Equal(expected, test.Occurrences);
+    }
+
+    [Fact]
+    public void TestIgnoreRrulePrefix()
+    {
+        var expected = new List<DateTime>
+        {
+            new DateTime(1997, 9, 2, 9, 0, 0),
+            new DateTime(1997, 9, 12, 9, 0, 0),
+            new DateTime(1997, 9, 22, 9, 0, 0),
+            new DateTime(1997, 10, 2, 9, 0, 0),
+            new DateTime(1997, 10, 12, 9, 0, 0)
+        };
+
+        var r = new When();
+        r.startDate(new DateTime(1997, 9, 2, 9, 0, 0))
+            .rrule("RRULE:FREQ=DAILY;INTERVAL=10;COUNT=5")
+            .generateOccurrences();
+
+        Assert.Equal(expected, r.Occurrences);
+    }
+
+    [Fact]
+    public void TestToRrule()
+    {
+        var expected = "DTSTART=19970902T090000Z;FREQ=daily;COUNT=5;INTERVAL=10";
+
+        var r = new When();
+        r.startDate(new DateTime(1997, 9, 2, 9, 0, 0))
+            .rrule("FREQ=DAILY;INTERVAL=10;COUNT=5");
+
+        Assert.Equal(expected, r.toRrule());
+    }
+
+    [Fact]
     public void TestInvalidStartDateException_ThrowsWhenStartDateNotFirstOccurrence()
     {
         var r = new When();
