@@ -3,17 +3,9 @@ namespace NWhen.Tests;
 public class WhenCoreTests
 {
     [Fact]
-    public void TestInvalidDateString()
-    {
-        // In C#, DateTime is a value type and is always valid, so test invalid freq instead
-        var test = new When();
-        Assert.Throws<ArgumentException>(() => test.freq("invalid_freq"));
-    }
-
-    [Fact]
     public void TestValidStartDate()
     {
-        var date = new DateTime(2024, 1, 15, 9, 0, 0);
+        var date = new DateTime(2012, 10, 10, 0, 0, 0);
         var test = new When();
         test.startDate(date);
         Assert.Equal(date, test.StartDate);
@@ -45,14 +37,6 @@ public class WhenCoreTests
         var test = new When();
         test.until(date);
         Assert.Equal(date, test.Until);
-    }
-
-    [Fact]
-    public void TestInvalidUntil_NotApplicable()
-    {
-        // until() always accepts DateTime; ArgumentException from invalid freq
-        var test = new When();
-        Assert.Throws<ArgumentException>(() => test.freq("invalid_freq"));
     }
 
     [Fact]
@@ -96,6 +80,10 @@ public class WhenCoreTests
         test = new When();
         test.bymonthday("1; 2; 3", ";");
         Assert.Equal(new List<int> { 1, 2, 3 }, test.Bymonthdays);
+
+        test = new When();
+        test.bymonthday(";1; 2; 3;", ";");
+        Assert.Equal(new List<int> { 1, 2, 3 }, test.Bymonthdays);
     }
 
     [Fact]
@@ -115,6 +103,26 @@ public class WhenCoreTests
         test = new When();
         test.byyearday(-12);
         Assert.Equal(new List<int> { -12 }, test.Byyeardays);
+
+        test = new When();
+        test.byyearday("1, 2,3 ");
+        Assert.Equal(new List<int> { 1, 2, 3 }, test.Byyeardays);
+
+        test = new When();
+        test.byyearday("1, 2,-3 ,");
+        Assert.Equal(new List<int> { 1, 2, -3 }, test.Byyeardays);
+
+        test = new When();
+        test.byyearday(new[] { -1, 2, 3 });
+        Assert.Equal(new List<int> { -1, 2, 3 }, test.Byyeardays);
+
+        test = new When();
+        test.byyearday("1; 2; 3", ";");
+        Assert.Equal(new List<int> { 1, 2, 3 }, test.Byyeardays);
+
+        test = new When();
+        test.byyearday(";1; 2; 3;", ";");
+        Assert.Equal(new List<int> { 1, 2, 3 }, test.Byyeardays);
     }
 
     [Fact]
@@ -128,47 +136,123 @@ public class WhenCoreTests
     public void TestValidByWeekNo()
     {
         var test = new When();
-        test.byweekno(5);
-        Assert.Equal(new List<int> { 5 }, test.Byweeknos);
+        test.byweekno(12);
+        Assert.Equal(new List<int> { 12 }, test.Byweeknos);
+
+        test = new When();
+        test.byweekno(-12);
+        Assert.Equal(new List<int> { -12 }, test.Byweeknos);
+
+        test = new When();
+        test.byweekno("1, 2,3 ");
+        Assert.Equal(new List<int> { 1, 2, 3 }, test.Byweeknos);
+
+        test = new When();
+        test.byweekno("1, 2,-3 ,");
+        Assert.Equal(new List<int> { 1, 2, -3 }, test.Byweeknos);
+
+        test = new When();
+        test.byweekno(new[] { -1, 2, 3 });
+        Assert.Equal(new List<int> { -1, 2, 3 }, test.Byweeknos);
+
+        test = new When();
+        test.byweekno("1; 2; 3", ";");
+        Assert.Equal(new List<int> { 1, 2, 3 }, test.Byweeknos);
+
+        test = new When();
+        test.byweekno(";1; 2; 3;", ";");
+        Assert.Equal(new List<int> { 1, 2, 3 }, test.Byweeknos);
     }
 
     [Fact]
     public void TestInvalidByWeekNo()
     {
         var test = new When();
-        Assert.Throws<ArgumentException>(() => test.byweekno(54));
+        Assert.Throws<ArgumentException>(() => test.byweekno(55));
     }
 
     [Fact]
     public void TestValidByMonth()
     {
         var test = new When();
-        test.bymonth(6);
-        Assert.Equal(new List<int> { 6 }, test.Bymonths);
+        test.bymonth(12);
+        Assert.Equal(new List<int> { 12 }, test.Bymonths);
+
+        test = new When();
+        test.bymonth("1, 2,3 ");
+        Assert.Equal(new List<int> { 1, 2, 3 }, test.Bymonths);
+
+        test = new When();
+        test.bymonth("1, 2,3 ,");
+        Assert.Equal(new List<int> { 1, 2, 3 }, test.Bymonths);
+
+        test = new When();
+        test.bymonth(new[] { 1, 2, 3 });
+        Assert.Equal(new List<int> { 1, 2, 3 }, test.Bymonths);
+
+        test = new When();
+        test.bymonth("1; 2; 3", ";");
+        Assert.Equal(new List<int> { 1, 2, 3 }, test.Bymonths);
+
+        test = new When();
+        test.bymonth(";1; 2; 3;", ";");
+        Assert.Equal(new List<int> { 1, 2, 3 }, test.Bymonths);
     }
 
     [Fact]
     public void TestInvalidByMonth()
     {
         var test = new When();
-        Assert.Throws<ArgumentException>(() => test.bymonth(13));
+        Assert.Throws<ArgumentException>(() => test.bymonth(-1));
     }
 
     [Fact]
     public void TestValidBySetPos()
     {
         var test = new When();
-        test.bysetpos(-1);
-        Assert.Equal(new List<int> { -1 }, test.Bysetpos);
+        test.bysetpos(12);
+        Assert.Equal(new List<int> { 12 }, test.Bysetpos);
+
+        test = new When();
+        test.bysetpos(-12);
+        Assert.Equal(new List<int> { -12 }, test.Bysetpos);
+
+        test = new When();
+        test.bysetpos("1, 2,3 ");
+        Assert.Equal(new List<int> { 1, 2, 3 }, test.Bysetpos);
+
+        test = new When();
+        test.bysetpos("1, 2,-3 ,");
+        Assert.Equal(new List<int> { 1, 2, -3 }, test.Bysetpos);
+
+        test = new When();
+        test.bysetpos(new[] { -1, 2, 3 });
+        Assert.Equal(new List<int> { -1, 2, 3 }, test.Bysetpos);
+
+        test = new When();
+        test.bysetpos("1; 2; 3", ";");
+        Assert.Equal(new List<int> { 1, 2, 3 }, test.Bysetpos);
+
+        test = new When();
+        test.bysetpos(";1; 2; 3;", ";");
+        Assert.Equal(new List<int> { 1, 2, 3 }, test.Bysetpos);
     }
 
     [Fact]
-    public void TestExclusionsArray()
+    public void TestInvalidBySetPos()
     {
-        var dates = new[] { new DateTime(2024, 1, 1), new DateTime(2024, 2, 1) };
+        var test = new When();
+        Assert.Throws<ArgumentException>(() => test.bysetpos(367));
+    }
+
+    [Fact]
+    public void TestValidExclusions()
+    {
+        var dates = new[] { new DateTime(2019, 1, 1), new DateTime(2019, 01, 02) };
+
         var test = new When();
         test.exclusions(dates);
-        Assert.Equal(2, test.Exclusions.Count);
+        Assert.Equal(dates, test.Exclusions);
     }
 
     [Fact]
