@@ -1,6 +1,6 @@
 namespace NWhen.Tests;
 
-public class WhenHourlyTests
+public class WhenHourlyRruleTests
 {
     [Fact]
     public void TestHourlyOne()
@@ -13,7 +13,7 @@ public class WhenHourlyTests
         };
 
         var r = new When("19970902T090000");
-        r.freq("hourly").interval(3).until(new DateTime(1997, 9, 2, 17, 0, 0)).generateOccurrences();
+        r.rrule("FREQ=HOURLY;INTERVAL=3;UNTIL=19970902T170000Z").generateOccurrences();
 
         Assert.Equal(expected, r.Occurrences);
     }

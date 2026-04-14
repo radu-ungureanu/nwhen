@@ -1,6 +1,6 @@
 namespace NWhen.Tests;
 
-public class WhenMinutelyTests
+public class WhenMinutelyRruleTests
 {
     [Fact]
     public void TestMinutelyOne()
@@ -12,7 +12,7 @@ public class WhenMinutelyTests
         };
 
         var r = new When("19970902T090000");
-        r.freq("minutely").interval(90).count(4).generateOccurrences();
+        r.rrule("FREQ=MINUTELY;INTERVAL=90;COUNT=4").generateOccurrences();
 
         Assert.Equal(expected, r.Occurrences);
     }
@@ -28,7 +28,7 @@ public class WhenMinutelyTests
         };
 
         var r = new When("19970902T090000");
-        r.freq("minutely").interval(15).count(6).generateOccurrences();
+        r.rrule("FREQ=MINUTELY;INTERVAL=15;COUNT=6").generateOccurrences();
 
         Assert.Equal(expected, r.Occurrences);
     }
