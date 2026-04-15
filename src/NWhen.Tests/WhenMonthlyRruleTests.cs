@@ -252,7 +252,7 @@ public class WhenMonthlyRruleTests
             .ToList();
 
         var r = new When("2011-09-15 10:00:00");
-        r.rrule("INTERVAL=1;FREQ=MONTHLY;UNTIL=2016-09-15T10:00:00+0100").generateOccurrences();
+        r.rrule("INTERVAL=1;FREQ=MONTHLY;UNTIL=2016-09-15T10:00:00").generateOccurrences();
 
         Assert.Equal(expected, r.Occurrences);
     }
